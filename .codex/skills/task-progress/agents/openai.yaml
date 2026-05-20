@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Progress"
+  short_description: "Record work progress in temp/task.md"
+  default_prompt: "Use $task-progress to record the current work state in temp/task.md."
