@@ -4,7 +4,10 @@
 
 ```text
 .
+├── .codex/
+│   └── skills/
 ├── AGENTS.md
+├── .gitignore
 ├── README.md
 ├── docs/
 │   ├── PROJECT_SPEC.md
@@ -29,6 +32,8 @@
 │   └── shaders/
 │       ├── glsl/
 │       └── wgsl/
+├── temp/
 └── tests/
 ```
 
+`temp/` は作業再開用の一時メモ置き場として使い、Git 管理対象外にします。

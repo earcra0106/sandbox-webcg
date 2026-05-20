@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Resume"
+  short_description: "Resume work from temp/task.md"
+  default_prompt: "Use $task-resume with another skill to read temp/task.md and continue the previous work."
