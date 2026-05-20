@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Implementation"
+  short_description: "通常のコード実装作業"
+  default_prompt: "Use $code-implementation to implement code changes with verification and documentation updates."

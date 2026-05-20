@@ -1,0 +1,4 @@
+interface:
+  display_name: "Requirements"
+  short_description: "作業前の要件定義とタスク記録"
+  default_prompt: "Use $requirements to define the work scope and create the task record before starting."

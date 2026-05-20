@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs Simple Change"
+  short_description: "小さなドキュメント変更"
+  default_prompt: "Use $docs-simple-change for a small documentation-only edit."

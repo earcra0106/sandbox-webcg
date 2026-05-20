@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Simple Change"
+  short_description: "小さなコード変更"
+  default_prompt: "Use $code-simple-change for a small focused code edit."

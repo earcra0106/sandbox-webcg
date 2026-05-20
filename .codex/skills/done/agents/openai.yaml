@@ -1,0 +1,4 @@
+interface:
+  display_name: "Done"
+  short_description: "完了後にmainを最新化"
+  default_prompt: "Use $done after finishing work to update the main branch."
