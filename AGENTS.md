@@ -21,14 +21,14 @@
 
 作業中には以下のルールを守ること。
 
-1. 作業内容に応じて、`.codex/prompts/` のカスタムコマンドを参照すること。
-    - 要件定義: `/requirements`
-    - docs更新: `/docs-update`
-    - コード実装: `/code-implementation`
-    - docs更新の単純なファイル変更: `/docs-simple-change`
-    - コード実装の単純なファイル変更: `/code-simple-change`
-    - 作業完了後にmainブランチを最新化する: `/done`
-2. 各コマンドでしか使わないルールは `AGENTS.md` に追記せず、該当する `.codex/prompts/*.md` に記載すること。
+1. 作業内容に応じて、`.codex/skills/` の skill を参照すること。
+    - 要件定義: `$requirements`
+    - docs更新: `$docs-update`
+    - コード実装: `$code-implementation`
+    - docs更新の単純なファイル変更: `$docs-simple-change`
+    - コード実装の単純なファイル変更: `$code-simple-change`
+    - 作業完了後にmainブランチを最新化する: `$done`
+2. 各 skill でしか使わないルールは `AGENTS.md` に追記せず、該当する `.codex/skills/<skill-name>/SKILL.md` に記載すること。
 3. `git push` などのリモート操作は、ユーザーが明示的に許可または依頼した場合のみ行うこと。
 4. 作業中にバグが発生した場合は、タイトル、発生日時( `yyyy/MM/dd hh:mm` )、分類、原因、解決方法、解決できない場合は代替案などを記載したレポートを作成すること。発生日時は `date +"%Y/%m/%d %H:%M"` コマンドで取得すること。
     - 作成したレポートを `docs/issues/` フォルダの下に、 `yyyyMMdd_hhmm_タイトル.md` として配置すること。

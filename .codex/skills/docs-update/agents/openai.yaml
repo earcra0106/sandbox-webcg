@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs Update"
+  short_description: "通常のドキュメント更新作業"
+  default_prompt: "Use $docs-update to run a normal documentation update workflow."
