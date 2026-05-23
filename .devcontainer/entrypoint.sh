@@ -32,15 +32,11 @@ if [ -d /host_config/.codex ]; then
 fi
 
 if [ -S /host_config/ssh_auth_sock ]; then
-  ssh_auth_sock_filename="$(basename "${HOST_SSH_AUTH_SOCK:-ssh_auth_sock}")"
-  ssh_auth_sock_path="/home/node/.ssh/$ssh_auth_sock_filename"
+  ssh_auth_sock_path="/home/node/.ssh/ssh_auth_sock"
 
   rm -f "$ssh_auth_sock_path"
   ln -s /host_config/ssh_auth_sock "$ssh_auth_sock_path"
   chown -h node:node "$ssh_auth_sock_path"
-
-  export SSH_AUTH_SOCK="$ssh_auth_sock_path"
-  printf 'export SSH_AUTH_SOCK=%s\n' "$ssh_auth_sock_path" > /etc/profile.d/devcontainer-ssh-auth-sock.sh
 fi
 
 exec "$@"

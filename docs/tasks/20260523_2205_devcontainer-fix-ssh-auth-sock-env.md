@@ -20,6 +20,12 @@ entrypoint 内の `export SSH_AUTH_SOCK=...` は、後から起動する VS Code
 - entrypoint 内の `export SSH_AUTH_SOCK` と `/etc/profile.d` 書き込みを整理する。
 - `/home/node/.ssh` 配下へソケットリンクを置く必要があるか再検討する。
 
+## 実装結果
+
+- `.devcontainer/devcontainer.json` の `remoteEnv` に `SSH_AUTH_SOCK: /home/node/.ssh/ssh_auth_sock` を追加した。
+- `.devcontainer/entrypoint.sh` では `/host_config/ssh_auth_sock` へのシンボリックリンクを固定パス `/home/node/.ssh/ssh_auth_sock` に作成するよう変更した。
+- entrypoint 内の `export SSH_AUTH_SOCK` と `/etc/profile.d` 書き込みを削除し、後続プロセスには `remoteEnv` で伝える構成にした。
+
 ## 検証
 
 - devcontainer 内の新規ターミナルで `echo "$SSH_AUTH_SOCK"` が期待値を返すこと。
