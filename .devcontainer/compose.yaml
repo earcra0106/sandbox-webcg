@@ -1,0 +1,13 @@
+services:
+  app:
+    image: node:24.15.0
+    init: true
+    working_dir: /workspaces/sandbox-webcg
+    entrypoint: /usr/local/bin/devcontainer-entrypoint.sh
+    command: sleep infinity
+    environment:
+      PNPM_HOME: /usr/local/share/pnpm
+      PATH: /usr/local/share/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    volumes:
+      - ..:/workspaces/sandbox-webcg:cached
+      - ./entrypoint.sh:/usr/local/bin/devcontainer-entrypoint.sh:ro
