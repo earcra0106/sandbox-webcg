@@ -6,8 +6,15 @@
   "overrideCommand": false,
   "remoteUser": "node",
   "remoteEnv": {
-    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+    "HOST_SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
   },
+  "mounts": [
+      "source=../..,target=/workspaces,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.codex,target=/host_config/.codex,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.ssh,target=/host_config/.ssh,type=bind,readonly,consistency=cached",
+      "source=${localEnv:SSH_AUTH_SOCK},target=/host_config/ssh_auth_sock,type=bind,readonly,consistency=cached"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
