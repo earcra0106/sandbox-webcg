@@ -5,11 +5,8 @@ services:
     working_dir: /workspaces/sandbox-webcg
     entrypoint: /usr/local/bin/devcontainer-entrypoint.sh
     command: sleep infinity
-    env_file:
-      - .env
     environment:
       PNPM_HOME: /usr/local/share/pnpm
-      OPENAI_API_KEY: ${OPENAI_API_KEY_FOR_CODEX:-}
       PATH: /usr/local/share/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     volumes:
       - ..:/workspaces/sandbox-webcg:cached

@@ -5,6 +5,9 @@
   "workspaceFolder": "/workspaces/sandbox-webcg",
   "overrideCommand": false,
   "remoteUser": "node",
+  "remoteEnv": {
+    "OPENAI_API_KEY": "${localEnv:OPEN_AI_API_KEY}"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
