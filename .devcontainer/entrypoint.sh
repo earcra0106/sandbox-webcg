@@ -28,6 +28,18 @@ if [ -f /host_config/.ssh/known_hosts ]; then
   chmod 644 /home/node/.ssh/known_hosts
 fi
 
+if [ -f /host_config/.ssh/config ]; then
+  cp /host_config/.ssh/config /home/node/.ssh/config
+  chown node:node /home/node/.ssh/config
+  chmod 600 /home/node/.ssh/config
+fi
+
+if [ -f /host_config/.gitconfig ]; then
+  cp /host_config/.gitconfig /home/node/.gitconfig
+  chown node:node /home/node/.gitconfig
+  chmod 644 /home/node/.gitconfig
+fi
+
 if [ -d /host_config/.codex ]; then
   cp -R /host_config/.codex/. /home/node/.codex/
 fi
@@ -45,15 +57,15 @@ fi
 chown -R node:node /home/node/.ssh /home/node/.codex
 chmod 700 /home/node/.ssh
 
-ssh_auth_sock_path="/home/node/.ssh/ssh_auth_sock"
+ssh_auth_sock_path="/home/node/.ssh/ssh_auth.sock"
 rm -f "$ssh_auth_sock_path"
 
-if [ ! -S /host_config/ssh_auth_sock ]; then
-  echo "SSH agent socket is not mounted at /host_config/ssh_auth_sock." >&2
+if [ ! -S /host_config/ssh_auth.sock ]; then
+  echo "SSH agent socket is not mounted at /host_config/ssh_auth.sock." >&2
   exit 1
 fi
 
-ln -s /host_config/ssh_auth_sock "$ssh_auth_sock_path"
+ln -s /host_config/ssh_auth.sock "$ssh_auth_sock_path"
 chown -h node:node "$ssh_auth_sock_path"
 
 exec "$@"
