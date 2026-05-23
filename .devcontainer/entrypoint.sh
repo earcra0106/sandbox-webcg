@@ -4,6 +4,7 @@ set -eu
 PNPM_VERSION="${PNPM_VERSION:-11.1.1}"
 CODEX_PACKAGE="${CODEX_PACKAGE:-@openai/codex}"
 CODEX_CONFIG_FILE="/home/node/.codex/config.toml"
+CODEX_AGENTS_FILE="/home/node/.codex/AGENTS.md"
 
 export PNPM_HOME="${PNPM_HOME:-/usr/local/share/pnpm}"
 export PATH="$PNPM_HOME:$PATH"
@@ -53,6 +54,26 @@ if grep -q '^preferred_auth_method[[:space:]]*=' "$CODEX_CONFIG_FILE"; then
 else
   printf '\npreferred_auth_method = "apikey"\n' >> "$CODEX_CONFIG_FILE"
 fi
+
+node_version="$(node --version)"
+pnpm_version="$(pnpm --version)"
+
+if [ ! -f "$CODEX_AGENTS_FILE" ]; then
+  touch "$CODEX_AGENTS_FILE"
+fi
+
+sed -i '/^<!-- devcontainer-env:start -->$/,/^<!-- devcontainer-env:end -->$/d' "$CODEX_AGENTS_FILE"
+cat <<EOF >> "$CODEX_AGENTS_FILE"
+
+<!-- devcontainer-env:start -->
+## Devcontainer Environment
+
+- この Codex セッションはプロジェクトの devcontainer 内で実行されています。
+- Node.js バージョン: $node_version
+- pnpm バージョン: $pnpm_version
+- パッケージ管理には pnpm を使用してください。プロジェクト依存関係の追加・更新に npm を使用してはいけません。
+<!-- devcontainer-env:end -->
+EOF
 
 chown -R node:node /home/node/.ssh /home/node/.codex
 chmod 700 /home/node/.ssh
