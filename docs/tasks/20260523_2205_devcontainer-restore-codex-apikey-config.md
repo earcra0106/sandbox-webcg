@@ -19,6 +19,12 @@
 - `.devcontainer/entrypoint.sh` に `config.toml` の作成と `preferred_auth_method` の upsert 処理を戻す。
 - `/home/node/.codex` の owner を `node:node` に整える。
 
+## 実装結果
+
+- `.devcontainer/entrypoint.sh` で `/home/node/.codex/config.toml` を作成する処理を追加した。
+- `preferred_auth_method` が既にある場合は `apikey` に更新し、ない場合は `preferred_auth_method = "apikey"` を追記するようにした。
+- ホスト側 `.codex` をコピーした後に upsert することで、ホスト設定を残しつつ API key 認証優先を保証するようにした。
+
 ## 検証
 
 - devcontainer 内で `/home/node/.codex/config.toml` に `preferred_auth_method = "apikey"` が存在すること。
