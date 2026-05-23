@@ -20,6 +20,12 @@
 - entrypoint の指定も、使わない旧設定コメントを削除する。
 - `git diff --check -- .devcontainer` が通る状態にする。
 
+## 実装結果
+
+- `.devcontainer/compose.yaml` からコメントアウト済みの旧 `entrypoint` と未完成の `volumes` ブロックを削除した。
+- `.devcontainer/compose.yaml` と `.devcontainer/Dockerfile` の trailing whitespace を解消した。
+- `git diff --check -- .devcontainer docs/tasks` が通る状態にした。
+
 ## 検証
 
 - `docker compose -f .devcontainer/compose.yaml config` が通ること。
