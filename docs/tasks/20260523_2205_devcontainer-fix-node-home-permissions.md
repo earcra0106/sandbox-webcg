@@ -20,6 +20,12 @@ entrypoint が root で動く場合、作成・コピーされたファイルの
 - `.ssh` ディレクトリを `700`、通常ファイルを必要に応じて `600` または `644` にする。
 - 秘密鍵をコピーしない方針と合わせて permission 設計を整理する。
 
+## 実装結果
+
+- `.devcontainer/entrypoint.sh` で `/home/node/.ssh` と `/home/node/.codex` の owner を `node:node` に整えるようにした。
+- `/home/node/.ssh` の permission を `700` に設定するようにした。
+- 秘密鍵はコピーしない前提のため、限定コピーしている `known_hosts` は `644` のまま扱う。
+
 ## 検証
 
 - `node` ユーザーで `.codex` を読み書きできること。

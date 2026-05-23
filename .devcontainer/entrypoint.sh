@@ -42,6 +42,9 @@ else
   printf '\npreferred_auth_method = "apikey"\n' >> "$CODEX_CONFIG_FILE"
 fi
 
+chown -R node:node /home/node/.ssh /home/node/.codex
+chmod 700 /home/node/.ssh
+
 ssh_auth_sock_path="/home/node/.ssh/ssh_auth_sock"
 rm -f "$ssh_auth_sock_path"
 
