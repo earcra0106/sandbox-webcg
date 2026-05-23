@@ -48,18 +48,12 @@ chmod 700 /home/node/.ssh
 ssh_auth_sock_path="/home/node/.ssh/ssh_auth_sock"
 rm -f "$ssh_auth_sock_path"
 
-host_ssh_auth_sock=""
-if [ -n "${HOST_SSH_AUTH_SOCK:-}" ]; then
-  case "$HOST_SSH_AUTH_SOCK" in
-    /tmp/*)
-      host_ssh_auth_sock="/host_tmp/${HOST_SSH_AUTH_SOCK#/tmp/}"
-      ;;
-  esac
+if [ ! -S /host_config/ssh_auth_sock ]; then
+  echo "SSH agent socket is not mounted at /host_config/ssh_auth_sock." >&2
+  exit 1
 fi
 
-if [ -n "$host_ssh_auth_sock" ] && [ -S "$host_ssh_auth_sock" ]; then
-  ln -s "$host_ssh_auth_sock" "$ssh_auth_sock_path"
-  chown -h node:node "$ssh_auth_sock_path"
-fi
+ln -s /host_config/ssh_auth_sock "$ssh_auth_sock_path"
+chown -h node:node "$ssh_auth_sock_path"
 
 exec "$@"
