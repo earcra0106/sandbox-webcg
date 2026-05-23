@@ -7,4 +7,5 @@ services:
     command: sleep infinity
     environment:
       PNPM_HOME: /usr/local/share/pnpm
+      NPM_CONFIG_STORE_DIR: /workspaces/.pnpm-store
       PATH: /usr/local/share/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

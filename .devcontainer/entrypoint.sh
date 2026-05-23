@@ -14,7 +14,6 @@ if ! command -v pnpm >/dev/null 2>&1 || [ "$(pnpm --version)" != "$PNPM_VERSION"
 fi
 
 pnpm config set global-bin-dir "$PNPM_HOME"
-pnpm config set store-dir /workspaces/.pnpm-store
 
 if ! command -v codex >/dev/null 2>&1; then
   pnpm add -g "$CODEX_PACKAGE"
