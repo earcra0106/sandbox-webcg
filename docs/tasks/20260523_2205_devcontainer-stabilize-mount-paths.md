@@ -20,6 +20,11 @@
 - `source=~/.codex` を `source=${localEnv:HOME}/.codex` へ変更する。
 - `source=~/.ssh` を `source=${localEnv:HOME}/.ssh` へ変更する。
 
+## 実装結果
+
+- `/workspaces` への mount 元を `source=${localWorkspaceFolder}/../..` に変更し、相対パスの解釈に依存しないようにした。
+- `.codex` と `.ssh` の mount 元は `source=${localEnv:HOME}/...` の明示指定になっていることを確認した。
+
 ## 検証
 
 - `Dev Containers: Rebuild Container` で mount エラーが発生しないこと。
