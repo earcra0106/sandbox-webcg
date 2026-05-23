@@ -20,6 +20,12 @@
 - 必要ならホスト側に固定パスを作る運用、または Dev Containers の標準 SSH agent forwarding を利用する。
 - entrypoint では `/host_config/ssh_auth_sock` が存在しない場合に何もせず続行する。
 
+## 実装結果
+
+- `${localEnv:SSH_AUTH_SOCK}` を直接 mount する構成をやめ、`/tmp` を `/host_tmp` へ readonly mount する構成に変更した。
+- `HOST_SSH_AUTH_SOCK` が `/tmp/...` を指す場合のみ、対応する `/host_tmp/...` のソケットを検出して `/home/node/.ssh/ssh_auth_sock` へシンボリックリンクするようにした。
+- `HOST_SSH_AUTH_SOCK` が未設定、または対応ソケットが存在しない場合は、リンクを作らずに処理を続行するようにした。
+
 ## 検証
 
 - ホスト側 `SSH_AUTH_SOCK` が未設定でも devcontainer が起動すること。

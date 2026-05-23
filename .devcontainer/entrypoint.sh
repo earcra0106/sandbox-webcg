@@ -31,11 +31,20 @@ if [ -d /host_config/.codex ]; then
   cp -R /host_config/.codex/. /home/node/.codex/
 fi
 
-if [ -S /host_config/ssh_auth_sock ]; then
-  ssh_auth_sock_path="/home/node/.ssh/ssh_auth_sock"
+ssh_auth_sock_path="/home/node/.ssh/ssh_auth_sock"
+rm -f "$ssh_auth_sock_path"
 
-  rm -f "$ssh_auth_sock_path"
-  ln -s /host_config/ssh_auth_sock "$ssh_auth_sock_path"
+host_ssh_auth_sock=""
+if [ -n "${HOST_SSH_AUTH_SOCK:-}" ]; then
+  case "$HOST_SSH_AUTH_SOCK" in
+    /tmp/*)
+      host_ssh_auth_sock="/host_tmp/${HOST_SSH_AUTH_SOCK#/tmp/}"
+      ;;
+  esac
+fi
+
+if [ -n "$host_ssh_auth_sock" ] && [ -S "$host_ssh_auth_sock" ]; then
+  ln -s "$host_ssh_auth_sock" "$ssh_auth_sock_path"
   chown -h node:node "$ssh_auth_sock_path"
 fi
 
