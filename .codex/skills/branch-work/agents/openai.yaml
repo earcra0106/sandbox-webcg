@@ -1,0 +1,4 @@
+interface:
+  display_name: "Branch Work"
+  short_description: "現在のブランチで追加作業してコミット"
+  default_prompt: "Use $branch-work to make additional changes on the current branch and commit them."
