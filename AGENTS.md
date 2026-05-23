@@ -43,4 +43,11 @@
 ## 既知の環境制約
 
 - この実行環境では、`.git/HEAD.lock` や `.git/index.lock` の作成が読み取り専用ファイルシステムとして拒否されることがある。ブランチ作成、チェックアウト、コミットなど `.git/` のメタデータ更新を伴う操作が失敗した場合は、同じ通常権限のコマンドを繰り返さず、権限昇格またはユーザー側での実行に切り替えること。
+- `docs/issues/` の記録上、以下の作業は権限昇格が必要になる可能性が高い。通常権限で失敗した場合は、同じ通常権限のコマンドを繰り返さず、権限昇格またはユーザー側での実行に切り替えること。
+    - `git checkout -b <branch-name>` による作業ブランチ作成。
+    - `git checkout <branch-name>` によるブランチ切り替え。
+    - `git add <changed-files>` によるインデックス更新。
+    - `git commit -m "<message>"` によるコミット作成。
+    - `git pull origin main` など、`.git/FETCH_HEAD` を更新する pull/fetch 系操作。
+    - `.codex/skills/` 配下への skill ディレクトリ作成、`SKILL.md` と `agents/openai.yaml` の追加・更新。
 - この実行環境には Python 実行環境がない前提で作業する。skill を追加・更新する場合は、Python ベースの補助スクリプトに依存せず、既存 skill の構成を参考に `SKILL.md` と `agents/openai.yaml` を直接編集すること。

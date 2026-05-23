@@ -1,0 +1,4 @@
+interface:
+  display_name: "Current Branch Push"
+  short_description: "現在のブランチをoriginへpush"
+  default_prompt: "Use $current-branch-push to push the current branch to origin."
