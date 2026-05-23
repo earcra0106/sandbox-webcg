@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pull Request"
+  short_description: "ghでGitHub PRを作成"
+  default_prompt: "Use $pull-request to create a GitHub pull request for the current branch."
