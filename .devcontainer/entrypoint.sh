@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-PNPM_VERSION="${PNPM_VERSION:-11.1.1}"
+PNPM_VERSION="${PNPM_VERSION:-11.2.2}"
 CODEX_PACKAGE="${CODEX_PACKAGE:-@openai/codex}"
 CODEX_AGENTS_FILE="/home/node/.codex/AGENTS.md"
 
