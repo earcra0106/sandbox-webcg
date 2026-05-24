@@ -3,10 +3,15 @@
   "dockerComposeFile": "compose.yaml",
   "service": "app",
   "workspaceFolder": "/workspaces/sandbox-webcg",
-  "initializeCommand": "sh -c 'test -n \"$SSH_AUTH_SOCK\" || { echo \"SSH_AUTH_SOCK is not set on the host.\" >&2; exit 1; }'",
+  "initializeCommand": "./.devcontainer/initialize.sh",
   "overrideCommand": false,
   "remoteUser": "node",
-  "remoteEnv": {
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+  "containerEnv": {
     "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
     "SSH_AUTH_SOCK": "/home/node/.ssh/ssh_auth.sock"
   },
