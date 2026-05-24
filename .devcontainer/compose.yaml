@@ -2,6 +2,11 @@ services:
   app:
     build: .
     init: true
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp=unconfined
+      - apparmor=unconfined
     working_dir: /workspaces/sandbox-webcg
     entrypoint: /workspaces/sandbox-webcg/.devcontainer/entrypoint.sh
     command: sleep infinity
@@ -9,3 +14,5 @@ services:
       PNPM_HOME: /usr/local/share/pnpm
       NPM_CONFIG_STORE_DIR: /workspaces/.pnpm-store
       PATH: /usr/local/share/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    env_file:
+      - .env.devcontainer

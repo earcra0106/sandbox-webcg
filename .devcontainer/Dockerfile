@@ -1,4 +1,5 @@
-FROM node:24.15.0
+ARG BASE_IMAGE=node:24.16.0
+FROM $BASE_IMAGE
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -14,4 +15,11 @@ RUN apt update && apt install -y \
 RUN usermod -aG sudo node
 RUN echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-RUN echo "alias ll='ls -la --color=auto'" >> /home/node/.bashrc
+RUN echo 'alias ll="ls -al"' >> /home/node/.bashrc
+
+RUN sed -i.bak 's/#\s*\(force_color_prompt=yes\)/\1/' ~/.bashrc
+
+RUN echo "PS1='\[\e[1;35m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '" >> /home/node/.bashrc
+
+RUN echo "clear -x" >> /home/node/.bashrc
+RUN echo "echo -e '\n\e[1;37mWelcome to Devcontainer!\e[0m\n'" >> /home/node/.bashrc
