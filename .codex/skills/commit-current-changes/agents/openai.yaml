@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Current Changes"
+  short_description: "現在の変更を確認して task 作成とコミット"
+  default_prompt: "Use $commit-current-changes to review the current working tree, create a branch and task record, then commit the selected changes."
