@@ -22,4 +22,4 @@ RUN sed -i.bak 's/#\s*\(force_color_prompt=yes\)/\1/' ~/.bashrc
 RUN echo "PS1='\[\e[1;35m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '" >> /home/node/.bashrc
 
 RUN echo "clear -x" >> /home/node/.bashrc
-RUN echo "echo -e '\n\e[1;37mWelcome to Devcontainer!\e[0m\n'" >> /home/node/.bashrc
+RUN echo "echo -e '\n\n\e[1;37mWelcome to Devcontainer!\e[0m\n'" >> /home/node/.bashrc
