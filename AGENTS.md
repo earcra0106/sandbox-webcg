@@ -25,6 +25,7 @@
     - 要件定義: `$requirements`
     - docs更新: `$docs-update`
     - コード実装: `$code-implementation`
+    - 現在の変更確認、task作成、コミット: `$commit-current-changes`
     - docs更新の単純なファイル変更: `$docs-simple-change`
     - コード実装の単純なファイル変更: `$code-simple-change`
     - 作業完了後にmainブランチを最新化する: `$done`
