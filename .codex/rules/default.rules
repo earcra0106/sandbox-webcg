@@ -1,0 +1,59 @@
+# prefix_rule(
+#     pattern = ["gh", "pr", "view"],
+#     decision = "allow",
+#     justification = "PR内容の確認用コマンドのため自動実行を許可する",
+# )
+
+prefix_rule(
+    pattern = ["pnpm", "install"],
+    decision = "allow",
+    justification = "プロジェクト依存関係のインストールに pnpm を使用するため許可する",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "add"],
+    decision = "allow",
+    justification = "プロジェクト依存関係の追加に pnpm を使用するため許可する",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "remove"],
+    decision = "allow",
+    justification = "プロジェクト依存関係の削除に pnpm を使用するため許可する",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "update"],
+    decision = "allow",
+    justification = "プロジェクト依存関係の更新に pnpm を使用するため許可する",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "run"],
+    decision = "allow",
+    justification = "プロジェクトの npm scripts 実行に pnpm を使用するため許可する",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "exec"],
+    decision = "allow",
+    justification = "プロジェクト内ツールの実行に pnpm を使用するため許可する",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "dlx"],
+    decision = "allow",
+    justification = "一時的な CLI 実行に pnpm を使用するため許可する",
+)
+
+prefix_rule(
+    pattern = ["gh", "pr", "create"],
+    decision = "allow",
+    justification = "GitHub プルリクエスト作成コマンドのため許可する",
+)
+
+prefix_rule(
+    pattern = ["npm"],
+    decision = "forbidden",
+    justification = "このプロジェクトではパッケージ管理に pnpm を使用し、npm の使用を禁止する",
+)
