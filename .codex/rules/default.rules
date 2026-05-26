@@ -1,9 +1,3 @@
-# prefix_rule(
-#     pattern = ["gh", "pr", "view"],
-#     decision = "allow",
-#     justification = "PR内容の確認用コマンドのため自動実行を許可する",
-# )
-
 prefix_rule(
     pattern = ["pnpm", "install"],
     decision = "allow",
@@ -56,4 +50,10 @@ prefix_rule(
     pattern = ["npm"],
     decision = "forbidden",
     justification = "このプロジェクトではパッケージ管理に pnpm を使用し、npm の使用を禁止する",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "self-update"],
+    decision = "forbidden",
+    justification = "pnpm のバージョン変更は禁止する",
 )

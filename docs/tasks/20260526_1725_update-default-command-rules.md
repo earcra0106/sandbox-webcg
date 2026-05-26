@@ -4,6 +4,7 @@
 
 - `.codex/rules/default.rules` に、pnpm の主要コマンドと `gh pr create` の許可設定を記載する。
 - npm の使用を禁止する設定を記載する。
+- `pnpm self-update` による pnpm バージョン変更を禁止する設定を記載する。
 
 ## 作成・編集するファイルのスコープ
 
