@@ -14,6 +14,7 @@
 - [実装ガイドライン](./specs/implementation-guidelines.md)
 - [UI 方針](./specs/ui-guidelines.md)
 - [動作確認方針](./specs/verification.md)
+- [実行時ライブラリ](./specs/runtime-libraries.md)
 
 ## Environment And Packages
 
