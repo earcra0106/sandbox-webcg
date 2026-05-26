@@ -29,5 +29,6 @@
         "esbenp.prettier-vscode"
       ]
     }
-  }
+  },
+  "forwardPorts": [5173]
 }
